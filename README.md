@@ -10,3 +10,9 @@ PlutusTx was used to create the [on-chain code](onchain.hs) and [Lucid](https://
 - mintNFT(assetName : string, metadata: Metadata)
 - burnNFT(assetName : string)
 - viewNFT(assetName : string)
+
+## Run
+
+```
+deno run -A offchain.ts
+```
