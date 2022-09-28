@@ -1,4 +1,4 @@
-# Minimal reference implementation of CIP-0068
+# Minimal implementation of CIP-0068
 
 ## Concept
 
