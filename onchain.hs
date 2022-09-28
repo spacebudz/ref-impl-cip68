@@ -17,7 +17,7 @@ txOutRef :: TxOutRef
 txOutRef = TxOutRef "568ea530dfe90b2a0890b340eac46b3c58ce298eb67cee047e2463ea105f4cdd" 0 -- Example out ref (required to mint NFT)
 
 
--- | Minting policy (mints user token and reference NFT as pair)
+-- | Minting policy (mints user token and reference NFT as pair). It is a one-shot policy.
 -- Minting policy depends on reference validator 
 {-# INLINEABLE mintValidatorControl #-}
 mintingPolicy :: Address -> TxOutRef -> Action -> ScriptContext -> Bool
@@ -61,7 +61,7 @@ mintingPolicy refAddress oref action ctx = case action of
     checkBurn = all (\(_,_,am) -> am < 0) (flattenValue txMint)
 
 
--- | Reference script (holds the reference NFT)
+-- | Reference validator (holds the reference NFT with metadata)
 {-# INLINEABLE refValidator #-}
 refValidator :: DatumMetadata -> () -> ScriptContext -> Bool
 refValidator datumMetadata () ctx = checkBurn

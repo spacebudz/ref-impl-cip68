@@ -103,7 +103,7 @@ export async function burnNFT(assetName: string): Promise<TxHash> {
   return signedTx.submit();
 }
 
-export async function getMetadata(assetName: string): Promise<Metadata> {
+export async function viewNFT(assetName: string): Promise<Metadata> {
   const refNft = policyId + utf8ToHex("(100)") + utf8ToHex(assetName); // The label is not finalized yet!
   const [refUtxo] = await lucid.utxosAtWithUnit(refAddress, refNft);
 
@@ -127,7 +127,7 @@ export async function getMetadata(assetName: string): Promise<Metadata> {
   console.log(txHash);
 
   // View
-  const metadata = await getMetadata("cip68")
+  const metadata = await viewNFT("cip68")
   console.log(metadata);
 
 */
